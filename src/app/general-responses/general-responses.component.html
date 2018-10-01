@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><img src="../../assets/ampath1.png" style="width: 2em;" alt="logo"></a>
+      <a class="navbar-brand" href="#">
+        <h3>POC Patient Feedback</h3>
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <form action="">
+    <div class="row">
+      <!-- <div class="col-md-6">
+        <div class="row">
+          <label for="text" style="font-size: 18px; margin-left: 15px">Select Department:</label>
+        </div>
+        <mat-card class="card">
+          <mat-form-field>
+            <mat-select placeholder="departments" [formControl]="departments_form" multiple #department>
+              <mat-option *ngFor="let elem of data" [value]="elem.uuid">{{elem.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-card>
+      </div> -->
+      <div class="col-md-12">
+        <div class="row">
+          <label for="text" style="font-size: 18px; margin-left: 15px">Select Program:</label>
+        </div>
+        <mat-card class="card">
+          <mat-form-field>
+            <mat-select #program  placeholder="programs" [formControl]="programControl" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let prog of programs" [value]="prog.proguuid" (click)="onChange(prog.proguuid)">
+                {{prog.progname}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="programControl.hasError('required')">Please choose a program</mat-error>
+            <mat-hint>{{programControl.value?.sound}}</mat-hint>
+          </mat-form-field>
+        </mat-card>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container-fluid" id="scroller"
+ngxInfiniteScroller
+strategy="scrollingToBoth"
+(onScrollUp)="onScrollUp()"
+(onScrollDown)="onScrollDown()">
+  <mat-accordion>
+    <div class="news" *ngFor='let data of questionObject  | paginate: { itemsPerPage: 10, currentPage: page }; let i = index;' style="margin-bottom: 10px">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header style="height: 20px">
+          <span>{{i+1}}.</span>&nbsp;&nbsp;{{data.question_text}}
+        </mat-expansion-panel-header>
+        <div *ngFor='let data2 of data.answers' class="well well-lg">
+          <div class="col-md-4">
+            <p>Answer Value:<span style="color:cornflowerblue">{{data2.answer}}</span></p>
+          </div>
+          <div class="col-md-4">
+            <p>Responses: <span style="color:lightslategrey">{{data2.count}}</span></p>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </div>
+  </mat-accordion>
+  <pagination-controls (pageChange)="page = $event" style="cursor: pointer;"></pagination-controls>
+</div>
