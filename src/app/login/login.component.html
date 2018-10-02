@@ -3,16 +3,16 @@
     <mat-card class="card">
       <div style="padding-top:30px" class="">
         <div class="logo">
-          <img class="img-responsive" src="./assets/ampath-logo.png">
+          <img class="img-responsive" src="/test-builds/patient-survey/assets/ampath-logo.png">
         </div>
 
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" class="form-signin">
 
-          <div style="margin-bottom: 25px">
-            <input type="text" class="form-control" name="username" placeholder="Username" ngModel required>
+          <div style="margin-bottom: 25px; font-size: 14px">
+            <input style="font-size: 16px" type="text" class="form-control" name="username" placeholder="Username" ngModel required>
           </div>
 
-          <div style="margin-bottom: 25px">
+          <div style="margin-bottom: 25px; font-size: 12px">
             <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password"
               (keyDown)="authenticated=undefined" ngModel required>
           </div>

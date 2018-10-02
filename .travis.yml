@@ -11,7 +11,7 @@ before_install:
 - npm i -g npm@^3
 - npm i -g brfs
 script:
-- npm run build 
+- npm run build:prod  
 sudo: required
 addons:
   apt:
@@ -19,8 +19,8 @@ addons:
     - sshpass
     - google-chrome-stable
 after_success:
-- mv dist/patientresponses amrs-survey
-- tar -czf build.tgz amrs-survey
+- mv dist patient-survey
+- tar -czf build.tgz patient-survey
 - export SSHPASS=$DEPLOY_PASS
 - sshpass -e scp -o stricthostkeychecking=no build.tgz $DEPLOY_USER@$DEPLOY_HOST:./
 - sshpass -e ssh -o stricthostkeychecking=no $DEPLOY_USER@$DEPLOY_HOST ./deploy-build.sh

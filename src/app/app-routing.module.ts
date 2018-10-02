@@ -30,7 +30,7 @@ const appRoutes = [
   imports: [
     CommonModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {enableTracing: false, useHash: true}),
   ],
   declarations: [
 
