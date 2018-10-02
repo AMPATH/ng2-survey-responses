@@ -29,7 +29,6 @@ import { GeneralResponsesComponent } from './general-responses/general-responses
   ],
   imports: [
     BrowserModule,
-    RouterModule,
     FormsModule,
     HttpModule,
     NgxPaginationModule,
