@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { tap } from 'rxjs/operators';
 
-const BASEURL = 'http://localhost:5000/';
+const BASEURL = 'https://ngx.ampath.or.ke/patient-feedbackserver/';
 
 @Injectable()
 export class QuizAswerService {
@@ -17,7 +17,6 @@ export class QuizAswerService {
   }
 
   getQuestions(programs) {
-    console.log('seervice prog', programs);
     return this.http.post(BASEURL + 'getQuestions', programs, {
       headers: this.getCredentials()
     }).pipe(tap());

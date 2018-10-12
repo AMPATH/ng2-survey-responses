@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "patientresponses": {
+    "patient-survey": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/patientresponses",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "patientresponses:build"
+            "browserTarget": "patient-survey:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "patientresponses:build:production"
+              "browserTarget": "patient-survey:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "patientresponses:build"
+            "browserTarget": "patient-survey:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "patientresponses-e2e": {
+    "patient-survey-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "patientresponses:serve"
+            "devServerTarget": "patient-survey:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "patientresponses:serve:production"
+              "devServerTarget": "patient-survey:serve:production"
             }
           }
         },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "patientresponses"
+  "defaultProject": "patient-survey"
 }

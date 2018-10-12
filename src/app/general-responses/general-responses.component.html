@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img src="../../assets/ampath1.png" style="width: 2em;" alt="logo"></a>
+      <a class="navbar-brand" href="#"><img src="assets/ampath1.png" style="width: 2em;" alt="logo"></a>
       <a class="navbar-brand" href="#">
         <h3>POC Patient Feedback</h3>
       </a>
@@ -24,33 +24,26 @@
         </mat-card>
       </div> -->
       <div class="col-md-12">
-        <div class="row">
-          <label for="text" style="font-size: 18px; margin-left: 15px">Select Program:</label>
-        </div>
+
         <mat-card class="card">
-          <mat-form-field>
-            <mat-select #program  placeholder="programs" [formControl]="programControl" required>
-              <mat-option>--</mat-option>
-              <mat-option *ngFor="let prog of programs" [value]="prog.proguuid" (click)="onChange(prog.proguuid)">
-                {{prog.progname}}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="programControl.hasError('required')">Please choose a program</mat-error>
-            <mat-hint>{{programControl.value?.sound}}</mat-hint>
-          </mat-form-field>
+          <div class="row">
+            <label for="text" style="font-size: 16px; margin-left: 15px">Select Program:</label>
+          </div>
+          <select style="font-size: 13px" class="form-control input-lg" (change)="onChange($event.target.value)" [formControl]="programControl" required>
+            <option value="" disabled selected>Select Survey Program </option>
+            <option *ngFor="let prog of programs" [value]="prog.proguuid">{{prog.progname}}</option>
+          </select>
         </mat-card>
       </div>
     </div>
   </form>
 </div>
 
-<div class="container-fluid" id="scroller"
-ngxInfiniteScroller
-strategy="scrollingToBoth"
-(onScrollUp)="onScrollUp()"
-(onScrollDown)="onScrollDown()">
+<div class="container-fluid" id="scroller" ngxInfiniteScroller strategy="scrollingToBoth" (onScrollUp)="onScrollUp()"
+  (onScrollDown)="onScrollDown()">
   <mat-accordion>
-    <div class="news" *ngFor='let data of questionObject  | paginate: { itemsPerPage: 10, currentPage: page }; let i = index;' style="margin-bottom: 10px">
+    <div class="news" *ngFor='let data of questionObject  | paginate: { itemsPerPage: 10, currentPage: page }; let i = index;'
+      style="margin-bottom: 10px">
       <mat-expansion-panel>
         <mat-expansion-panel-header style="height: 20px">
           <span>{{i+1}}.</span>&nbsp;&nbsp;{{data.question_text}}
@@ -66,5 +59,7 @@ strategy="scrollingToBoth"
       </mat-expansion-panel>
     </div>
   </mat-accordion>
+  <div class="text-center">
   <pagination-controls (pageChange)="page = $event" style="cursor: pointer;"></pagination-controls>
+  </div>
 </div>
